@@ -28,4 +28,4 @@ try:
         print(positionStr, end='')
         print('\b' * len(positionStr), end='', flush=True)
 except KeyboardInterrupt:
-        console.print('\n', style='white on blue')
+    console.print('\n', style='white on blue')
