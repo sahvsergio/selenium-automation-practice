@@ -69,12 +69,14 @@ def open_markets():
 
 
 def search_product(product):
-
-    action = driver.send_keys(Keys.ALT+str(range(1, 4)))
+    for tab in range(1,4):
+        tab=str(tab)
+        driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.ALT+tab)
 
 
 urls = request_urls
 markets = open_markets()
+search=search_product(product)
 
 
 """
