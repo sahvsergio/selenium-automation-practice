@@ -46,6 +46,7 @@ def request_urls():
         url = Prompt.ask('Please provide new url')
         urls.append(url)
         print(urls)
+    driver.close()
     return urls
 
 
@@ -65,13 +66,18 @@ def open_markets():
     for url in urls:
         driver.get(url)
         driver.switch_to.new_window('tab')
-        pyautogui.click(x=1222, y=79)
+        print(driver.title)
+        
+    
 
 
 def search_product(product):
+    
     for tab in range(1,4):
-        tab=str(tab)
-        driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.ALT+tab)
+        current_page=driver.current_window_handle
+        first_child_page=driver.window_handles
+        driver.window_handles[tab]
+        #driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.ALT+tab)
 
 
 urls = request_urls

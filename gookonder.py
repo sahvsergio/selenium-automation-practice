@@ -1,6 +1,6 @@
 """Project requirements
-We can start on Basics like for example a bot that opens Chrome
-opens a set amount of tabs and
+*opens Chrome
+*opens a set amount of tabs and
 then organizes those tabs and
 put some in groups names labels
 and colors the groups
@@ -26,8 +26,6 @@ import sys
 console = Console()
 
 
-
-
 def request_number_of_tabs():
 
     quantity_of_tabs = Prompt.ask("Please enter the number of tabs to open")
@@ -35,6 +33,7 @@ def request_number_of_tabs():
 
 
 def request_sites_to_open(quantity_of_tabs):
+    
 
     sites_to_open = []
     for tab in range(quantity_of_tabs):
@@ -44,8 +43,9 @@ def request_sites_to_open(quantity_of_tabs):
 
     return sites_to_open
 
-
-def open_browser(sites_to_open):  
+#opens
+def open_browser(sites_to_open):
+   
     options = Options()
     options.page_load_strategy = 'normal'
     # locators
@@ -54,25 +54,39 @@ def open_browser(sites_to_open):
 
     # assigning webdriver to a variable for further use
     driver = webdriver.Chrome(options=options)
+
     for site in sites_to_open:
+
         if len(sites_to_open) == 1:
             driver.get(site)
+
             console.print(driver.current_url, style='white on blue')
-        
+        else:
+            driver.get(site)
+            driver.switch_to.new_window('tab')
     
-   
+    driver.close()
+                
 
 
-
+def organize_tabs():
+    pass
+"""
 def save_bookmarks(sites):
-    for site in sites:        
+    for site in sites:
         pyautogui.click(x=1239, y=123)
         pyautogui.click(x=1205, y=312)
         pyautogui.click(x=1348, y=112)
         pyautogui.keyDown('control')
         pyautogui.keyDown('shift')
         pyautogui.press('b')
-    
+"""
+
+"""Define a description of your web page:
+<meta name = "description" content = Free Web tutorials for HTML and CSS >
+"""
+
+def track_mouse():
     try:
         while True:
             x, y = pyautogui.position()
@@ -87,4 +101,6 @@ def save_bookmarks(sites):
 many_tabs = request_number_of_tabs()
 sites = request_sites_to_open(many_tabs)
 browsers_tabs = open_browser(sites)
-saved_bookmars = save_bookmarks(sites)
+
+#saved_bookmars = save_bookmarks(sites)
+mouse= track_mouse()
